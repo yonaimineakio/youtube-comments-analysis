@@ -1,0 +1,59 @@
+手順書
+
+
+前提条件
+
+・python　3.8.x以上(当方は3.8.10)
+
+・"pip install -r requirements.txt"の実行が完了していること。
+
+・matplotlibが日本語表示に対応していること。
+ していない場合、以下を参照。
+ https://www.teamxeppet.com/python-matplotlib-in-japanese/
+
+実行手順
+
+1. youtube_livechat_replay_crawler-master\continuation_livechat_crawlerフォルダ配下に移動。
+
+2. "python locally_run.py <動画ＩＤ>"を実行。
+※初回実行の動画IDの場合、データ抽出→データ前処理→描写の流れで実行。動画によっては時間がかかる。
+　二回目以降はデータ前処理→描写の流れで実行。比較的早い。
+
+
+出力結果
+
+
+①画像(imagesフォルダ配下に出力)
+
+・all_comments.png
+動画全体に対するグラフ画像
+
+・image0-x.png
+出現率高い順でコメント毎にグラフ化。
+
+②CSVファイル(continuation_livechat_crawlerフォルダ配下に出力)
+
+・data.csv
+動画全体のtime(時刻),text(コメント)を出力。
+
+
+③jsonファイル(continuation_livechat_crawlerフォルダ配下に出力)
+・<動画ID>.json
+動画アーカイブデータがJsno形式で格納。
+
+
+
+参考
+データ取得機能に関しては以下のコードを引用しました。
+各ファイルの詳細な機能について理解を深めたい場合、参考になるかと思います。
+
+https://github.com/hase-ryo/youtube_livechat_replay_crawler
+
+
+Ｘ軸目盛りの調整の仕方
+
+youtube_livechat_replay_crawler-master\visualize_data\per_comments_graph.pyファイルの116行目の関数「most_common()」の引数を変更。
+
+"""
+116 text_time_tmp=text_time.most_common(6)←ここの引数を変更。
+"""
