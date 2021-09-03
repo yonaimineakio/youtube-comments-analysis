@@ -12,18 +12,6 @@ At this document, introduce overview of each scripts.
 
 ## Scripts overview
 
-### channel_video_list
-
-Get a list of publicly available videos from the Youtube Data API.
-The argument is a Channel ID.
-Place the retrieved list in Google Cloud Storage.
-
-### untouched_video_checker
-
-Identify videos that have not been stored chat log.
-Compare the GCS file list with the list of publicly available videos.
-Send the ID of the identified video to Google Cloud Pub/Sub.
-
 ### initial_livechat_check
 
 Get the HTTP source from the Youtube video page.
@@ -40,12 +28,6 @@ Get 800 pages of chat logs.
 If there is still a continuation, send the following URL to the Pub/Sub.
 Finish when the rest is gone.
 
-### bigquery_ops
-
-Loads the data stored in GCS to BigQuery.
-It starts manually.
-If the total number of chat logs is low compared to the video time, mark it as uncollected video.
-Remove uncollected video.
 
 ### gcs_wrapper (external submodule)
 
